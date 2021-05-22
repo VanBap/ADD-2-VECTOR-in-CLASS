@@ -1,0 +1,41 @@
+// =========== CACH 1 =================//
+
+class Matrix {
+    public:
+        vector<vector<int>> a;
+};
+
+inline Matrix operator+(const Matrix &A, const Matrix &B) {
+    Matrix C;
+    int n = A.a.size(), m = A.a.front().size();
+    
+    for(int i = 0; i < n; ++i) {
+        C.a.push_back(A.a[i]);
+        for(int j = 0; j < m; ++j) {
+            C.a[i][j] += B.a[i][j];
+        }
+    }
+    
+    return C;
+}
+
+//============== CACH 2 ================//
+
+class Matrix{
+    public:
+        std::vector<std::vector<int>> a;
+    
+        Matrix operator+ (const Matrix& other){
+            Matrix result;
+            // n x m matrix
+            auto n = a.size();
+            auto m = a[0].size();
+            result.a.resize(n, std::vector<int>(m)); // vector.resize (new size,value )
+
+            for (std::size_t i = 0; i < n; i++)
+                for (std::size_t j = 0; j < m; j++){
+                result.a[i][j] = a[i][j] + other.a[i][j];
+            }
+            return result;
+    }
+};
